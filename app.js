@@ -31,7 +31,7 @@ function newEmployee() {
   });
 }
 
-// employee detail promt
+// employee detail prompt
 function askEmployDetails() {
   inquirer
     .prompt([
@@ -70,7 +70,7 @@ function askEmployDetails() {
       },
       {
         type: "input",
-        message: "What is the Intern's School?",
+        message: "What is the Office Number?",
         name: "officeNumber",
         when: (userInput) => userInput.title === "Manager",
       },
