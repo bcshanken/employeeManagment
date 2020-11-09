@@ -10,6 +10,102 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employees = [];
+
+// initiation prompt
+function newEmployee() {
+  inquirer.prompt([
+    {
+      type: "list",
+      message: "Do you have an employee to enter?",
+      name: "addition",
+      choices: ["yes", "no"],
+    },
+  ])
+  .then((userInput) => {
+      if(userInput.addition === "yes"){
+          askEmployDetails();
+      } else{
+          console.log(employees);
+      }
+  });
+}
+
+// employee detail promt
+function askEmployDetails() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "What is the title",
+        name: "title",
+        choices: ["Engineer", "Intern", "Manager"],
+      },
+      {
+        type: "input",
+        message: "What is the employee name?",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What is the employee id Number?",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "What is the employee email",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What is the Engineer's Github?",
+        name: "github",
+        when: (userInput) => userInput.title === "Engineer",
+      },
+      {
+        type: "input",
+        message: "What is the Intern's School?",
+        name: "school",
+        when: (userInput) => userInput.title === "Intern",
+      },
+      {
+        type: "input",
+        message: "What is the Intern's School?",
+        name: "officeNumber",
+        when: (userInput) => userInput.title === "Manager",
+      },
+    ])
+    .then((userInput) => {
+      if (userInput.title === "Engineer") {
+        const newEng = new Engineer(
+          userInput.name,
+          userInput.id,
+          userInput.email,
+          userInput.github
+        );
+        employees.push(newEng);
+      } else if (userInput.title === "Intern") {
+        const newIntern = new Intern(
+          userInput.name,
+          userInput.id,
+          userInput.email,
+          userInput.school
+        );
+        employees.push(newIntern);
+      } else {
+        const newManager = new Manager(
+          userInput.name,
+          userInput.id,
+          userInput.email,
+          userInput.officeNumber
+        );
+        employees.push(newManager);
+      }
+      newEmployee();
+    });
+}
+
+newEmployee();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
