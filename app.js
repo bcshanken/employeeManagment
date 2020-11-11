@@ -10,6 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+
 const employees = [];
 
 // initiation prompt
@@ -114,6 +115,8 @@ function askEmployDetails() {
     });
 }
 
+
+
 function renderEmployee(employee) {
   if (employee.getRole() === "Manager") {
     var managerCard = fs.readFileSync(`./templates/manager.html`, `utf8`);
@@ -121,6 +124,7 @@ function renderEmployee(employee) {
     managerCard = managerCard.replace("{{ role }}", employee.getRole());
     managerCard = managerCard.replace("{{ id }}", employee.getId());
     managerCard = managerCard.replace("{{ email }}", employee.getEmail());
+    managerCard = managerCard.replace("{{ emailDisplay }}", employee.getEmail());
     managerCard = managerCard.replace(
       "{{ officeNumber }}",
       employee.getOfficeNumber()
@@ -132,6 +136,7 @@ function renderEmployee(employee) {
     internCard = internCard.replace("{{ role }}", employee.getRole());
     internCard = internCard.replace("{{ id }}", employee.getId());
     internCard = internCard.replace("{{ email }}", employee.getEmail());
+    internCard = internCard.replace("{{ emailDisplay }}", employee.getEmail());
     internCard = internCard.replace("{{ school }}", employee.getSchool());
     return internCard;
   } else {
@@ -140,6 +145,7 @@ function renderEmployee(employee) {
     engineerCard = engineerCard.replace("{{ role }}", employee.getRole());
     engineerCard = engineerCard.replace("{{ id }}", employee.getId());
     engineerCard = engineerCard.replace("{{ email }}", employee.getEmail());
+    engineerCard = engineerCard.replace("{{ emailDisplay }}", employee.getEmail());
     engineerCard = engineerCard.replace("{{ github }}", employee.getGithub());
     return engineerCard;
   }
