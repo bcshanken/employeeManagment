@@ -13,8 +13,8 @@ To install the application fork the repo and install on your local machine. Then
 In your terminal navigate to the proper workplace. Run node on the app.js file and answer the prompts. An HTML file will be generated for you. See the video below for clarity. 
 
 <a href="https://www.youtube.com/watch?v=F9dknExowVw
-" target="_blank"><img src="https://github.com/bcshanken/readMe-Generator/blob/main/imgs/videoImg.JPG?raw=true)" 
-alt="IMAGE ALT TEXT HERE" /></a>
+" target="_blank"><img src="https://github.com/bcshanken/employeeManagment/blob/main/img/Capture.JPG?raw=true)" 
+alt="video image" /></a>
 
 
 
